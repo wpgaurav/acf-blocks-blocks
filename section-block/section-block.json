@@ -1,0 +1,66 @@
+[
+  {
+    "key": "group_acf_section",
+    "title": "Section Block",
+    "fields": [
+      {
+        "key": "field_acf_section_html_tag",
+        "label": "HTML Tag",
+        "name": "acf_section_html_tag",
+        "type": "select",
+        "choices": {
+          "section": "<section>",
+          "div": "<div>",
+          "article": "<article>",
+          "aside": "<aside>",
+          "main": "<main>",
+          "header": "<header>",
+          "footer": "<footer>",
+          "custom": "Custom"
+        },
+        "default_value": "section",
+        "ui": 1,
+        "return_format": "value"
+      },
+      {
+        "key": "field_acf_section_custom_tag",
+        "label": "Custom HTML Tag",
+        "name": "acf_section_custom_tag",
+        "type": "text",
+        "instructions": "Enter a custom HTML tag if 'Custom' is selected above.",
+        "conditional_logic": [
+          [
+            {
+              "field": "field_acf_section_html_tag",
+              "operator": "==",
+              "value": "custom"
+            }
+          ]
+        ]
+      },
+      {
+        "key": "field_acf_section_custom_class",
+        "label": "Custom CSS Class",
+        "name": "acf_section_custom_class",
+        "type": "text",
+        "instructions": "Optional. Add a custom class for additional styling."
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/acf_section"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "A block for wrapping inner blocks in a customizable container."
+  }
+]
