@@ -3,7 +3,7 @@ $avatar = get_field('ob_avatar');
 $citation = get_field('ob_citation');
 ?>
 
-<div class="opinion-block <?php echo $block['className']; ?>">
+<div class="opinion-block">
     <div class="opinion-content">
         <InnerBlocks templateLock="false" />
     </div>

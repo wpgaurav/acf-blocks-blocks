@@ -43,14 +43,31 @@ $inline_style_attr = $inline_style ? ' style="' . esc_attr( $inline_style ) . '"
     if ( $groups && is_array( $groups ) && count( $groups ) > 0 ) :
         $index = 1;
         foreach ( $groups as $group ) :
-            $active_class = ( $index === 1 ) ? ' active' : '';
+            $is_active = ( $index === 1 );
+            $aria_expanded = $is_active ? 'true' : 'false';
+            $active_class = $is_active ? ' active' : '';
+            $title_id = esc_attr( $unique_id . '_' . $index . '_title' );
+            $panel_id = esc_attr( $unique_id . '_' . $index . '_panel' );
             ?>
             <div id="<?php echo esc_attr( $unique_id . '_' . $index ); ?>" class="accordion-group<?php echo $active_class; ?>">
-                <div class="accordion-title" data-accordion="<?php echo esc_attr( $index ); ?>">
+                <div class="accordion-title" 
+                     role="button" 
+                     tabindex="0" 
+                     aria-expanded="<?php echo $aria_expanded; ?>" 
+                     aria-controls="<?php echo $panel_id; ?>"
+                     id="<?php echo $title_id; ?>"
+                     data-accordion="<?php echo esc_attr( $index ); ?>">
                     <?php echo do_shortcode( $group['acf_accord_group_title'] ); ?>
                 </div>
-                <div class="accordion-content">
-                    <?php echo do_shortcode( $group['acf_accord_group_content'] ); ?>
+                <div class="accordion-content"
+                     id="<?php echo $panel_id; ?>"
+                     role="region"
+                     aria-labelledby="<?php echo $title_id; ?>"
+                     <?php echo $is_active ? '' : 'hidden'; ?>>
+                    <?php 
+                    // Use wpautop() to preserve line breaks in the accordion content.
+                    echo wpautop( do_shortcode( $group['acf_accord_group_content'] ) ); 
+                    ?>
                 </div>
             </div>
             <?php

@@ -27,41 +27,40 @@ $description  = get_field('pl_block_description');
 $pricing      = get_field('pl_block_pricing');
 $coupons      = get_field('pl_block_coupons');
 $buttons      = get_field('pl_block_buttons');
+$image_width =  get_field('pl_block_image_width');
+$width_style = $image_width ? $image_width : '64px';
 ?>
 
 <div class="pl-block">
-  <!-- Top Row: Rank, Icon, Product Name (3 columns using Flex) -->
-  <div class="pl-block-header">
-    <div class="pl-block-column pl-block-rank">
+  <div class="has-border-bottom" style="display: flex; align-items: center; margin-bottom: 20px; justify-content: flex-start;">
+    <div class="block-single pl-block-rank">
       <?php if ( $rank ): ?>
         <div class="pl-block-rank-text"><?php echo esc_html($rank); ?></div>
       <?php endif; ?>
     </div>
-    <div class="pl-block-column pl-block-icon">
+    <div class="block-single pl-block-icon">
       <?php if ( $icon ): ?>
-        <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo esc_attr($icon['alt']); ?>" style="width:64px; height:auto;"/>
+        <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo esc_attr($icon['alt']); ?>" style="width:<?php echo esc_attr($width_style); ?>; height:auto;"/>
       <?php endif; ?>
     </div>
-    <div class="pl-block-column pl-block-name">
+    <div class="block-single pl-block-name">
       <?php if ( $product_name ): ?>
-        <p class="small-title"><?php echo esc_html($product_name); ?></p>
+        <p class="small-title mb-none"><?php echo esc_html($product_name); ?></p>
       <?php endif; ?>
     </div>
   </div>
 
-  <!-- Description (Full Width) -->
   <div class="pl-block-description">
     <?php if ( $description ): ?>
       <?php echo $description; ?>
     <?php endif; ?>
   </div>
 
-  <!-- Pricing and Coupons (2 columns: half-half) -->
   <div class="pl-block-info">
     <div class="pl-block-pricing">
       <?php if ( $pricing ): ?>
         <h3>Pricing</h3>
-        <ul>
+        <ul class="is-style-list">
           <?php foreach ( $pricing as $price_item ): ?>
             <li>
               <strong><?php echo esc_html($price_item['pl_block_pricing_title']); ?>:</strong>
@@ -74,10 +73,10 @@ $buttons      = get_field('pl_block_buttons');
     <div class="pl-block-coupons">
       <?php if ( $coupons ): ?>
         <h3>Coupons</h3>
-        <ul>
+        <ul class="is-style-list">
           <?php foreach ( $coupons as $coupon_item ): ?>
             <li>
-              <span class="pl-coupon-code"><?php echo esc_html($coupon_item['pl_block_coupon_code']); ?></span>
+              <span class="pl-coupon-code"> <i class="md-icon-badge-percent" aria-hidden="true"></i> <?php echo esc_html($coupon_item['pl_block_coupon_code']); ?></span>
               <?php if ( !empty($coupon_item['pl_block_coupon_offer']) ): ?>
                 <span class="pl-coupon-offer"> - <?php echo esc_html($coupon_item['pl_block_coupon_offer']); ?></span>
               <?php endif; ?>
@@ -88,7 +87,6 @@ $buttons      = get_field('pl_block_buttons');
     </div>
   </div>
 
-  <!-- Offer Buttons (Stacked inline-blocks) -->
   <div class="pl-block-buttons">
     <?php if ( $buttons ): ?>
       <?php foreach ( $buttons as $button ): ?>
@@ -99,7 +97,7 @@ $buttons      = get_field('pl_block_buttons');
           $btn_class = $button['pl_block_button_class'];
           $rel_attr  = $btn_rel ? ' rel="' . esc_attr($btn_rel) . '"' : '';
         ?>
-        <a href="<?php echo esc_url($btn_url); ?>"<?php echo $rel_attr; ?> class="pl-block-button <?php echo esc_attr($btn_class); ?>">
+        <a href="<?php echo esc_url($btn_url); ?>"<?php echo $rel_attr; ?> class="button button-arrow <?php echo esc_attr($btn_class); ?>">
           <?php echo esc_html($btn_text); ?>
         </a>
       <?php endforeach; ?>
