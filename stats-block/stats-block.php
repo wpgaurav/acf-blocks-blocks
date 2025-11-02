@@ -55,7 +55,12 @@ $animation_class = $enable_animation ? ' has-animation' : '';
             <div class="stat-item">
                 <?php if ( $icon ) : ?>
                     <div class="stat-icon">
-                        <?php echo esc_html( $icon ); ?>
+                        <?php
+                        $icon_markup = function_exists( 'md_get_icon_markup' )
+                            ? md_get_icon_markup( $icon )
+                            : esc_html( $icon );
+                        echo $icon_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                        ?>
                     </div>
                 <?php endif; ?>
 

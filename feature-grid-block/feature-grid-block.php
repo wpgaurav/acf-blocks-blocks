@@ -50,7 +50,12 @@ $layout_class = $layout_style ? ' layout-' . esc_attr( $layout_style ) : ' layou
                                 </div>
                             <?php elseif ( $feature['acf_feature_icon'] ) : ?>
                                 <div class="feature-icon">
-                                    <?php echo esc_html( $feature['acf_feature_icon'] ); ?>
+                                    <?php
+                                    $icon_markup = function_exists( 'md_get_icon_markup' )
+                                        ? md_get_icon_markup( $feature['acf_feature_icon'] )
+                                        : esc_html( $feature['acf_feature_icon'] );
+                                    echo $icon_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                    ?>
                                 </div>
                             <?php endif; ?>
                         </div>

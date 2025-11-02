@@ -90,6 +90,35 @@ if ( ! function_exists( 'load_acf_blocks_from_json' ) ) {
 // Use acf/init so ACF is fully loaded before reading "acf" keys from block.json.
 add_action( 'acf/init', 'load_acf_blocks_from_json', 5 );
 
+if ( ! function_exists( 'md_get_icon_markup' ) ) {
+    /**
+     * Return sanitized icon markup based on the provided value.
+     *
+     * Allows emoji/text output while also supporting CSS class strings
+     * (e.g. "fa-solid fa-star" or "md-icon-sample").
+     *
+     * @param string $icon Raw icon value from ACF.
+     * @return string Markup safe for direct output.
+     */
+    function md_get_icon_markup( $icon ) {
+        $icon = trim( (string) $icon );
+
+        if ( '' === $icon ) {
+            return '';
+        }
+
+        $contains_emoji = preg_match( '/[\x{1F000}-\x{1FAFF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}]/u', $icon );
+        $looks_like_class = preg_match( '/^[A-Za-z0-9_\-\s:]+$/u', $icon )
+            && ( false !== strpos( $icon, '-' ) || false !== strpos( $icon, ' ' ) );
+
+        if ( $looks_like_class && ! $contains_emoji ) {
+            return sprintf( '<i class="%s" aria-hidden="true"></i>', esc_attr( $icon ) );
+        }
+
+        return esc_html( $icon );
+    }
+}
+
 if ( ! function_exists( 'md_register_acf_block_field_groups' ) ) {
     /**
      * Load and register local field groups stored as JSON inside a block folder.
