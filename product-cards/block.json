@@ -1,0 +1,19 @@
+{
+  "apiVersion": 3,
+  "name": "acf/product-cards",
+  "title": "Product Cards",
+  "description": "A customizable product card block.",
+  "category": "formatting",
+  "icon": "grid-view",
+  "keywords": ["product", "card", "custom"],
+  "acf": {
+    "renderTemplate": "product-cards.php",
+    "blockVersion": 3
+  },
+  "supports": {
+    "align": true
+  },
+  "style": [
+    "file:./product-cards.css"
+  ]
+}

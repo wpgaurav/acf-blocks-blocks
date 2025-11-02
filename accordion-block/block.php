@@ -1,12 +1,5 @@
 <?php
-/**
- * Register ACF block: Accordion Block
- */
-
-if (!function_exists('acf_register_block_type')) {
-    return;
-}
-
+// Accordion Block
 acf_register_block_type([
     'name'              => 'accordion',
     'title'             => __('Accordion'),
@@ -15,9 +8,10 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'list-view',
     'keywords'          => ['accordion', 'faq', 'toggle'],
+    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/accordion-block/accordion.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,
-        'jsx'    => true,
+        'jsx' => true,
     ],
 ]);

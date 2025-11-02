@@ -68,7 +68,7 @@
 .activate-discount-btn {
     display: inline-block;
     background: #2b6cb0;
-    color: white;
+    color: white!important;
     padding: 0.85rem 1.5rem;
     border-radius: 4px;
     text-decoration: none;

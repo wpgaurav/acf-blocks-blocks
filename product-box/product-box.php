@@ -17,10 +17,11 @@ $description = get_field('pb_description');
 
 <div class="product-box grid-2" style="align-items:center">
     <?php if( $image ): ?>
-        <div class="product-box__image">
-            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
-        </div>
-    <?php endif; ?>
+    <div class="product-box__image">
+        <?php echo wp_get_attachment_image( $image['ID'], 'md-block', false, array( 'class' => 'product-box__image-img' ) ); ?>
+    </div>
+<?php endif; ?>
+
 	<div>
     <?php if( $title ): ?>
         <p class="product-box__title fw-900 med-title"><?php echo esc_html($title); ?></p>
@@ -48,7 +49,7 @@ $description = get_field('pb_description');
     <?php endif; ?>
 
     <?php if( have_rows('pb_buttons') ): ?>
-        <div class="product-box__buttons">
+        <div class="product-box__buttons" style="display: flex ; flex-direction: row; align-content: center; justify-content: center; align-items: center; flex-wrap: wrap;">
             <?php while( have_rows('pb_buttons') ): the_row(); 
                 $cta_text  = get_sub_field('pb_cta_text');
                 $cta_url   = get_sub_field('pb_cta_url');
