@@ -58,6 +58,8 @@ if ( ! function_exists( 'load_acf_blocks_from_json' ) ) {
                     continue; // Skip loading extra.php if registration failed.
                 }
 
+                md_register_acf_block_field_groups( $block_folder );
+
                 // Autoload per-block extra.php if present — great for hooks, helpers, inline CSS systems, etc.
                 if ( file_exists( $extra_php ) && is_readable( $extra_php ) ) {
                     require_once $extra_php;
@@ -65,6 +67,8 @@ if ( ! function_exists( 'load_acf_blocks_from_json' ) ) {
             } elseif ( file_exists( $legacy_php ) && is_readable( $legacy_php ) ) {
                 // Fallback: include legacy PHP registration file.
                 require_once $legacy_php;
+
+                md_register_acf_block_field_groups( $block_folder );
 
                 // Also autoload extra.php for legacy blocks if available.
                 if ( file_exists( $extra_php ) && is_readable( $extra_php ) ) {
@@ -85,3 +89,58 @@ if ( ! function_exists( 'load_acf_blocks_from_json' ) ) {
 
 // Use acf/init so ACF is fully loaded before reading "acf" keys from block.json.
 add_action( 'acf/init', 'load_acf_blocks_from_json', 5 );
+
+if ( ! function_exists( 'md_register_acf_block_field_groups' ) ) {
+    /**
+     * Load and register local field groups stored as JSON inside a block folder.
+     *
+     * Supports both single group JSON objects and arrays of groups exported by ACF.
+     *
+     * @param string $block_folder Absolute path to the block directory.
+     * @return void
+     */
+    function md_register_acf_block_field_groups( $block_folder ) {
+        if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+            return;
+        }
+
+        $json_files = glob( trailingslashit( $block_folder ) . '*.json' );
+
+        if ( empty( $json_files ) ) {
+            return;
+        }
+
+        foreach ( $json_files as $json_file ) {
+            if ( substr( $json_file, -10 ) === 'block.json' ) {
+                continue;
+            }
+
+            $raw = file_get_contents( $json_file );
+
+            if ( false === $raw ) {
+                continue;
+            }
+
+            $data = json_decode( $raw, true );
+
+            if ( json_last_error() !== JSON_ERROR_NONE || empty( $data ) ) {
+                continue;
+            }
+
+            // Normalise to an array of groups.
+            if ( isset( $data['key'], $data['fields'] ) ) {
+                $data = array( $data );
+            }
+
+            if ( ! is_array( $data ) ) {
+                continue;
+            }
+
+            foreach ( $data as $group ) {
+                if ( isset( $group['key'], $group['fields'] ) ) {
+                    acf_add_local_field_group( $group );
+                }
+            }
+        }
+    }
+}
