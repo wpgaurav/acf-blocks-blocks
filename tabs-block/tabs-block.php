@@ -58,7 +58,14 @@ $style_class = $tab_style ? ' tabs-' . esc_attr( $tab_style ) : ' tabs-default';
                         aria-controls="<?php echo $panel_id; ?>"
                         data-tab="<?php echo esc_attr( $index ); ?>">
                     <?php if ( $tab['acf_tab_icon'] ) : ?>
-                        <span class="tab-icon"><?php echo esc_html( $tab['acf_tab_icon'] ); ?></span>
+                        <span class="tab-icon">
+                            <?php
+                            $icon_markup = function_exists( 'md_get_icon_markup' )
+                                ? md_get_icon_markup( $tab['acf_tab_icon'] )
+                                : esc_html( $tab['acf_tab_icon'] );
+                            echo $icon_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                            ?>
+                        </span>
                     <?php endif; ?>
                     <span class="tab-title"><?php echo esc_html( $tab['acf_tab_title'] ); ?></span>
                 </button>

@@ -50,7 +50,7 @@
                     "label": "Icon",
                     "name": "acf_stat_icon",
                     "type": "text",
-                    "instructions": "Enter an icon (emoji or text).",
+                    "instructions": "Enter an icon (emoji, text, or CSS class like 'fa-star').",
                     "required": 0
                 }
             ]

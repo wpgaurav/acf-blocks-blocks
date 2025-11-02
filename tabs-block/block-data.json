@@ -26,7 +26,7 @@
                     "label": "Tab Icon",
                     "name": "acf_tab_icon",
                     "type": "text",
-                    "instructions": "Enter an icon (emoji or text) for this tab.",
+                    "instructions": "Enter an icon (emoji, text, or CSS class like 'fa-star') for this tab.",
                     "required": 0
                 },
                 {
