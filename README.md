@@ -202,6 +202,8 @@ Blocks are automatically registered using the `load_acf_blocks_from_json()` func
 
 - **PL Block** - Pros and cons list display
 
+- **Star Rating Block** (`acf/star-rating`) - Collect visitor star ratings and display the aggregate score
+
  
 
 ## Usage
