@@ -15,6 +15,5 @@ acf_register_block_type([
     'category'          => 'formatting',
     'icon'              => 'grid-view',
     'keywords'          => ['product', 'card', 'custom'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/product-cards/product-cards.css',
     'supports'          => ['align' => true,]
 ]);

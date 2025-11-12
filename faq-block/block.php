@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'editor-help',
     'keywords'          => ['faq', 'question', 'answer', 'help'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/faq-block/faq.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

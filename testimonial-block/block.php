@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'format-quote',
     'keywords'          => ['testimonial', 'review', 'quote', 'customer'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/testimonial-block/testimonial.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

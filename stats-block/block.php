@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'chart-bar',
     'keywords'          => ['stats', 'counter', 'numbers', 'metrics', 'achievements'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/stats-block/stats.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

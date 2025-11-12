@@ -15,7 +15,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'admin-comments',
     'keywords'          => ['opinion', 'box', 'feedback'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/opinion-box/opinion-box.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

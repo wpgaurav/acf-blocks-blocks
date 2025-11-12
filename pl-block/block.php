@@ -15,7 +15,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'products',
     'keywords'          => ['product', 'offer', 'pricing', 'coupon'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/pl-block/pl-block.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'media',
     'icon'              => 'format-gallery',
     'keywords'          => ['gallery', 'images', 'photos', 'grid'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/gallery-block/gallery.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

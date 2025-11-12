@@ -15,6 +15,5 @@ acf_register_block_type([
     'category'          => 'formatting',
     'icon'              => 'grid-view',
     'keywords'          => ['compare', 'vs', 'custom'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/compare-block/compare-block.css',
     'supports'          => ['align' => true,]
 ]);

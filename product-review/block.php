@@ -15,7 +15,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'admin-comments',
     'keywords'          => ['review', 'product', 'rating'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/product-review/product-review.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

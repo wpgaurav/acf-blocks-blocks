@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'cover-image',
     'keywords'          => ['hero', 'banner', 'header', 'featured'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/hero-block/hero.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

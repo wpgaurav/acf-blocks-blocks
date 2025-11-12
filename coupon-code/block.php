@@ -15,7 +15,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'tickets',
     'keywords'          => ['coupon', 'discount', 'offer'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/coupon-code/coupon-code.css?v=06042025',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'index-card',
     'keywords'          => ['tabs', 'tabbed', 'content', 'sections'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/tabs-block/tabs.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

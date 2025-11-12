@@ -15,7 +15,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'admin-post',
     'keywords'          => ['post', 'article', 'display', 'grid'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . 'blocks/post-display/post-display.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

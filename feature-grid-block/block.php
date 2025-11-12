@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'grid-view',
     'keywords'          => ['features', 'grid', 'services', 'benefits'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/feature-grid-block/feature-grid.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,
