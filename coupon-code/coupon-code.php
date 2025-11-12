@@ -14,9 +14,6 @@ $coupon_code            = get_field('cb_code');
 $copy_coupon_text       = get_field('cb_copy_text') ?: 'Copy Coupon';
 $activate_discount_text = get_field('cb_activate_text') ?: 'Activate Discount';
 $activate_discount_url  = get_field('cb_activate_url');
-
-// Enqueue the CSS file
-wp_enqueue_style('coupon-code-styles', get_stylesheet_directory_uri() . '/blocks/coupon-code/coupon-code.css', array(), '1.0.0');
 ?>
 
 <div class="coupon-code-block">

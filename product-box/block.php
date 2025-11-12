@@ -15,7 +15,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'cart',
     'keywords'          => ['product', 'box', 'rating'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/product-box/product-box.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

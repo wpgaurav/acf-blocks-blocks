@@ -12,8 +12,5 @@
   },
   "supports": {
     "align": true
-  },
-  "style": [
-    "file:./product-cards.css"
-  ]
+  }
 }

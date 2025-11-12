@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'groups',
     'keywords'          => ['team', 'member', 'staff', 'person', 'profile'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/team-member-block/team-member.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

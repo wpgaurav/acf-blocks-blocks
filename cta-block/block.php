@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'megaphone',
     'keywords'          => ['cta', 'call to action', 'button', 'conversion'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/cta-block/cta.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

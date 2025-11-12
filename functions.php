@@ -173,3 +173,131 @@ if ( ! function_exists( 'md_register_acf_block_field_groups' ) ) {
         }
     }
 }
+
+if ( ! function_exists( 'md_enqueue_acf_block_styles_conditionally' ) ) {
+    /**
+     * Conditionally enqueue block styles only when blocks are actually used on the page.
+     *
+     * This prevents loading CSS for all blocks on every page, improving performance.
+     *
+     * @return void
+     */
+    function md_enqueue_acf_block_styles_conditionally() {
+        // Only run on frontend and block editor
+        if ( is_admin() && ! wp_doing_ajax() ) {
+            return;
+        }
+
+        global $post;
+
+        // Get the current post content
+        $content = '';
+        if ( $post instanceof WP_Post ) {
+            $content = $post->post_content;
+        }
+
+        // If we're in the block editor, load all styles (for preview purposes)
+        if ( is_admin() || ( function_exists( 'get_current_screen' ) && get_current_screen() && get_current_screen()->is_block_editor() ) ) {
+            md_enqueue_all_block_styles();
+            return;
+        }
+
+        // If no content, nothing to check
+        if ( empty( $content ) ) {
+            return;
+        }
+
+        // Define block name to CSS file mapping
+        $block_styles = array(
+            'acf/accordion'        => 'accordion-block/accordion.css',
+            'acf/callout'          => 'callout/callout.css',
+            'acf/compare'          => 'compare-block/compare.css',
+            'acf/coupon-code'      => 'coupon-code/coupon-code.css',
+            'acf/cta'              => 'cta-block/cta.css',
+            'acf/email-form'       => 'email-form/email-form.css',
+            'acf/faq'              => 'faq-block/faq.css',
+            'acf/feature-grid'     => 'feature-grid-block/feature-grid.css',
+            'acf/gallery'          => 'gallery-block/gallery.css',
+            'acf/hero'             => 'hero-block/hero.css',
+            'acf/opinion-box'      => 'opinion-box/opinion-box.css',
+            'acf/pl'               => 'pl-block/pl.css',
+            'acf/post-display'     => 'post-display/post-display.css',
+            'acf/product-box'      => 'product-box/product-box.css',
+            'acf/product-cards'    => 'product-cards/product-cards.css',
+            'acf/product-review'   => 'product-review/product-review.css',
+            'acf/section'          => 'section-block/section-block.css',
+            'acf/stats'            => 'stats-block/stats.css',
+            'acf/tabs'             => 'tabs-block/tabs.css',
+            'acf/team-member'      => 'team-member-block/team-member.css',
+            'acf/testimonial'      => 'testimonial-block/testimonial.css',
+            'acf/thread-builder'   => 'thread-builder/thread-builder.css',
+            'acf/video'            => 'video-block/video.css',
+            'acf/star-rating'      => 'star-rating-block/star-rating.css',
+        );
+
+        // Check which blocks are actually used and enqueue their styles
+        foreach ( $block_styles as $block_name => $css_file ) {
+            if ( has_block( $block_name, $post ) ) {
+                $handle = str_replace( '/', '-', $block_name ) . '-style';
+                $css_path = get_stylesheet_directory_uri() . '/blocks/' . $css_file;
+                $css_file_path = get_stylesheet_directory() . '/blocks/' . $css_file;
+
+                // Only enqueue if the file exists
+                if ( file_exists( $css_file_path ) ) {
+                    wp_enqueue_style( $handle, $css_path, array(), filemtime( $css_file_path ) );
+                }
+            }
+        }
+    }
+}
+
+if ( ! function_exists( 'md_enqueue_all_block_styles' ) ) {
+    /**
+     * Enqueue all block styles (used in block editor for preview purposes).
+     *
+     * @return void
+     */
+    function md_enqueue_all_block_styles() {
+        $block_styles = array(
+            'acf-accordion'        => 'accordion-block/accordion.css',
+            'acf-callout'          => 'callout/callout.css',
+            'acf-compare'          => 'compare-block/compare.css',
+            'acf-coupon-code'      => 'coupon-code/coupon-code.css',
+            'acf-cta'              => 'cta-block/cta.css',
+            'acf-email-form'       => 'email-form/email-form.css',
+            'acf-faq'              => 'faq-block/faq.css',
+            'acf-feature-grid'     => 'feature-grid-block/feature-grid.css',
+            'acf-gallery'          => 'gallery-block/gallery.css',
+            'acf-hero'             => 'hero-block/hero.css',
+            'acf-opinion-box'      => 'opinion-box/opinion-box.css',
+            'acf-pl'               => 'pl-block/pl.css',
+            'acf-post-display'     => 'post-display/post-display.css',
+            'acf-product-box'      => 'product-box/product-box.css',
+            'acf-product-cards'    => 'product-cards/product-cards.css',
+            'acf-product-review'   => 'product-review/product-review.css',
+            'acf-section'          => 'section-block/section-block.css',
+            'acf-stats'            => 'stats-block/stats.css',
+            'acf-tabs'             => 'tabs-block/tabs.css',
+            'acf-team-member'      => 'team-member-block/team-member.css',
+            'acf-testimonial'      => 'testimonial-block/testimonial.css',
+            'acf-thread-builder'   => 'thread-builder/thread-builder.css',
+            'acf-video'            => 'video-block/video.css',
+            'acf-star-rating'      => 'star-rating-block/star-rating.css',
+        );
+
+        foreach ( $block_styles as $handle => $css_file ) {
+            $css_path = get_stylesheet_directory_uri() . '/blocks/' . $css_file;
+            $css_file_path = get_stylesheet_directory() . '/blocks/' . $css_file;
+
+            if ( file_exists( $css_file_path ) ) {
+                wp_enqueue_style( $handle . '-style', $css_path, array(), filemtime( $css_file_path ) );
+            }
+        }
+    }
+}
+
+// Hook into wp_enqueue_scripts to conditionally load block styles on frontend
+add_action( 'wp_enqueue_scripts', 'md_enqueue_acf_block_styles_conditionally' );
+
+// Hook into enqueue_block_editor_assets to load styles in the block editor
+add_action( 'enqueue_block_editor_assets', 'md_enqueue_all_block_styles' );

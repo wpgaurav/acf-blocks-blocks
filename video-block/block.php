@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'media',
     'icon'              => 'video-alt3',
     'keywords'          => ['video', 'youtube', 'vimeo', 'media', 'embed'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/video-block/video.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

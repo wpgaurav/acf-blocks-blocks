@@ -12,8 +12,5 @@
   },
   "supports": {
     "align": true
-  },
-  "style": [
-    "file:./compare-block.css"
-  ]
+  }
 }

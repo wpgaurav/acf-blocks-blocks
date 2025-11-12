@@ -16,7 +16,6 @@ acf_register_block_type([
     'category'          => 'formatting',
     'icon'              => 'format-chat',
     'keywords'          => ['twitter', 'thread', 'conversation', 'social', 'tweet'],
-    'enqueue_style'     =>  get_stylesheet_directory_uri() . 'blocks/thread-builder/thread-builder.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

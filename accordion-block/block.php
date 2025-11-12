@@ -8,7 +8,6 @@ acf_register_block_type([
     'category'          => 'common',
     'icon'              => 'list-view',
     'keywords'          => ['accordion', 'faq', 'toggle'],
-    'enqueue_style'     => get_stylesheet_directory_uri() . '/blocks/accordion-block/accordion.css',
     'supports'          => [
         'align'  => true,
         'mode'   => true,

@@ -15,8 +15,5 @@
     "mode": true,
     "anchor": true,
     "jsx": true
-  },
-  "style": [
-    "file:./opinion-box.css"
-  ]
+  }
 }
