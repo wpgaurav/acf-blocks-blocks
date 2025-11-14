@@ -1,43 +1,81 @@
+/**
+ * Product Cards Block Styles
+ * Using Web Awesome design tokens
+ */
+
 .product-card {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    background: #fff;
+	border-radius: var(--wa-border-radius-l);
+	overflow: hidden;
+	box-shadow: var(--wa-shadow-m);
+	text-align: center;
+	background: var(--wa-color-surface-raised);
+	transition: all var(--wa-transition-duration-normal) var(--wa-transition-easing);
+}
+
+.product-card:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--wa-shadow-l);
 }
 
 .product-header {
-    padding: 15px;
-    font-size: 1.5rem;
-    font-weight: bold;
+	padding: var(--wa-space-m);
+	font-size: var(--wa-font-size-xl);
+	font-weight: var(--wa-font-weight-bold);
+	color: var(--wa-color-text-normal);
+	line-height: var(--wa-line-height-condensed);
 }
 
 .product-image img {
-    width: 100%;
-    height: auto;
+	width: 100%;
+	height: auto;
 }
 
 .product-content {
-    padding: 15px;
-    font-size: 1rem;
-    color: #333;
+	padding: var(--wa-space-m);
+	font-size: var(--wa-font-size-m);
+	color: var(--wa-color-text-normal);
+	line-height: var(--wa-line-height-normal);
 }
 
 .product-button {
-    display: inline-block;
-    background: black;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 10px;
+	display: inline-block;
+	background: var(--wa-color-neutral-fill-loud);
+	color: var(--wa-color-neutral-on-loud);
+	padding: var(--wa-space-s) var(--wa-space-m);
+	text-decoration: none;
+	font-weight: var(--wa-font-weight-bold);
+	border-radius: var(--wa-border-radius-m);
+	margin-top: var(--wa-space-s);
+	transition: all var(--wa-transition-duration-normal) var(--wa-transition-easing);
+}
+
+.product-button:hover {
+	background: color-mix(in srgb, var(--wa-color-neutral-fill-loud) 85%, black);
+	transform: translateY(-2px);
+	box-shadow: var(--wa-shadow-s);
+}
+
+.product-button:focus-visible {
+	outline: var(--wa-border-width-l) solid var(--wa-color-focus);
+	outline-offset: var(--wa-focus-ring-offset);
 }
 
 .product-link a {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #007bff;
-    text-decoration: none;
+	display: block;
+	margin-top: var(--wa-space-s);
+	font-size: var(--wa-font-size-s);
+	color: var(--wa-color-brand-fill-normal);
+	text-decoration: none;
+	transition: color var(--wa-transition-duration-fast) var(--wa-transition-easing);
+}
+
+.product-link a:hover {
+	color: var(--wa-color-brand-fill-loud);
+	text-decoration: underline;
+}
+
+.product-link a:focus-visible {
+	outline: var(--wa-border-width-l) solid var(--wa-color-focus);
+	outline-offset: var(--wa-focus-ring-offset);
+	border-radius: var(--wa-border-radius-s);
 }

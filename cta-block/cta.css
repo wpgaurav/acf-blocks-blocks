@@ -1,81 +1,121 @@
+/**
+ * CTA Block Styles
+ * Using Web Awesome design tokens
+ */
+
 .cta-block {
-    padding: 60px 30px;
-    text-align: center;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    margin: 20px 0;
+	padding: var(--wa-space-3xl) var(--wa-space-xl);
+	text-align: center;
+	background-color: var(--wa-color-surface-lowered);
+	border-radius: var(--wa-border-radius-l);
+	margin: var(--wa-space-l) 0;
+	box-shadow: var(--wa-shadow-s);
 }
 
 .cta-content {
-    max-width: 700px;
-    margin: 0 auto;
+	max-width: 700px;
+	margin: 0 auto;
 }
 
 .cta-heading {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    line-height: 1.3;
+	font-size: var(--wa-font-size-3xl);
+	font-weight: var(--wa-font-weight-bold);
+	margin-bottom: var(--wa-space-l);
+	line-height: var(--wa-line-height-condensed);
+	color: var(--wa-color-text-normal);
 }
 
 .cta-description {
-    font-size: 1.125rem;
-    margin-bottom: 30px;
-    line-height: 1.6;
+	font-size: var(--wa-font-size-l);
+	margin-bottom: var(--wa-space-xl);
+	line-height: var(--wa-line-height-normal);
+	color: var(--wa-color-text-normal);
 }
 
 .cta-button {
-    display: inline-block;
-    padding: 15px 40px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+	display: inline-block;
+	padding: var(--wa-space-m) var(--wa-space-2xl);
+	text-decoration: none;
+	border-radius: var(--wa-border-radius-m);
+	font-weight: var(--wa-font-weight-semibold);
+	font-size: var(--wa-font-size-m);
+	transition: all var(--wa-transition-duration-slow) var(--wa-transition-easing);
+	cursor: pointer;
+	border: var(--wa-border-width-m) solid transparent;
 }
 
 .cta-button.primary {
-    background-color: #007bff;
-    color: #fff;
+	background-color: var(--wa-color-brand-fill-normal);
+	color: var(--wa-color-brand-on-normal);
 }
 
 .cta-button.primary:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
+	background-color: var(--wa-color-brand-fill-loud);
+	transform: translateY(-2px);
+	box-shadow: var(--wa-shadow-m);
+}
+
+.cta-button.primary:active {
+	transform: translateY(0);
+}
+
+.cta-button.primary:focus-visible {
+	outline: var(--wa-border-width-l) solid var(--wa-color-focus);
+	outline-offset: var(--wa-focus-ring-offset);
 }
 
 .cta-button.secondary {
-    background-color: #6c757d;
-    color: #fff;
+	background-color: var(--wa-color-neutral-fill-loud);
+	color: var(--wa-color-neutral-on-loud);
 }
 
 .cta-button.secondary:hover {
-    background-color: #545b62;
-    transform: translateY(-2px);
+	background-color: color-mix(in srgb, var(--wa-color-neutral-fill-loud) 85%, black);
+	transform: translateY(-2px);
+	box-shadow: var(--wa-shadow-m);
+}
+
+.cta-button.secondary:active {
+	transform: translateY(0);
+}
+
+.cta-button.secondary:focus-visible {
+	outline: var(--wa-border-width-l) solid var(--wa-color-focus);
+	outline-offset: var(--wa-focus-ring-offset);
 }
 
 .cta-button.outline {
-    background-color: transparent;
-    border: 2px solid #007bff;
-    color: #007bff;
+	background-color: transparent;
+	border-color: var(--wa-color-brand-border-normal);
+	color: var(--wa-color-brand-fill-normal);
 }
 
 .cta-button.outline:hover {
-    background-color: #007bff;
-    color: #fff;
-    transform: translateY(-2px);
+	background-color: var(--wa-color-brand-fill-normal);
+	color: var(--wa-color-brand-on-normal);
+	transform: translateY(-2px);
+	box-shadow: var(--wa-shadow-m);
+}
+
+.cta-button.outline:active {
+	transform: translateY(0);
+}
+
+.cta-button.outline:focus-visible {
+	outline: var(--wa-border-width-l) solid var(--wa-color-focus);
+	outline-offset: var(--wa-focus-ring-offset);
 }
 
 @media (max-width: 768px) {
-    .cta-block {
-        padding: 40px 20px;
-    }
+	.cta-block {
+		padding: var(--wa-space-2xl) var(--wa-space-l);
+	}
 
-    .cta-heading {
-        font-size: 1.75rem;
-    }
+	.cta-heading {
+		font-size: var(--wa-font-size-2xl);
+	}
 
-    .cta-description {
-        font-size: 1rem;
-    }
+	.cta-description {
+		font-size: var(--wa-font-size-m);
+	}
 }

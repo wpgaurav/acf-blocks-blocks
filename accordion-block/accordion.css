@@ -1,62 +1,102 @@
-/* Accordion Styles (Tailwind-ish) */
+/**
+ * Accordion Block Styles
+ * Using Web Awesome design tokens
+ */
 
 .gt-accordion {
-  border: 1px solid #e5e7eb; /* gray-200 */
-  border-radius: 0.5rem;  /* rounded-lg */
-  overflow: hidden;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* shadow-sm */
+	border: var(--wa-border-width-s) solid var(--wa-color-surface-border);
+	border-radius: var(--wa-border-radius-l);
+	overflow: hidden;
+	box-shadow: var(--wa-shadow-s);
+	background-color: var(--wa-color-surface-raised);
 }
 
 .gt-accordion-group + .gt-accordion-group {
-  border-top: 1px solid #e5e7eb;
+	border-top: var(--wa-border-width-s) solid var(--wa-color-surface-border);
 }
 
 .gt-accordion-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1rem; /* p-3 px-4 */
-  background-color: #f9fafb; /* gray-50 */
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--wa-space-s);
+	padding: var(--wa-space-m) var(--wa-space-l);
+	background-color: var(--wa-color-surface-lowered);
+	font-weight: var(--wa-font-weight-semibold);
+	font-size: var(--wa-font-size-m);
+	line-height: var(--wa-line-height-normal);
+	color: var(--wa-color-text-normal);
+	cursor: pointer;
+	transition: background-color var(--wa-transition-duration-normal) var(--wa-transition-easing);
+	user-select: none;
 }
 
 .gt-accordion-title:hover {
-  background-color: #f3f4f6; /* gray-100 */
+	background-color: color-mix(in srgb, var(--wa-color-surface-lowered) 90%, var(--wa-color-mix-hover));
+}
+
+.gt-accordion-title:focus-visible {
+	outline: none;
+	box-shadow: inset var(--wa-focus-ring);
 }
 
 .gt-accordion-title::after {
-  content: '\25BC'; /* downward chevron */
-  font-size: 0.75rem;
-  color: #6b7280; /* gray-500 */
-  transition: transform 0.2s ease;
-  margin-left: 0.5rem;
+	content: '\25BC';
+	font-size: var(--wa-font-size-s);
+	color: var(--wa-color-text-quiet);
+	transition: transform var(--wa-transition-duration-normal) var(--wa-transition-easing);
+	flex-shrink: 0;
 }
 
 .gt-accordion-group.active .gt-accordion-title {
-  background-color: #ffffff; /* white */
+	background-color: var(--wa-color-surface-raised);
 }
 
 .gt-accordion-group.active .gt-accordion-title::after {
-  transform: rotate(-180deg);
+	transform: rotate(-180deg);
 }
 
 .gt-accordion-content {
-  padding: 0.75rem 1rem; /* p-3 px-4 */
-  background-color: #ffffff;
-  color: #4b5563; /* gray-700 */
-  line-height: 1.6;
+	padding: var(--wa-space-m) var(--wa-space-l);
+	background-color: var(--wa-color-surface-raised);
+	color: var(--wa-color-text-normal);
+	line-height: var(--wa-line-height-normal);
+	font-size: var(--wa-font-size-m);
 }
 
-/* Optional: style paragraphs inside content */
 .gt-accordion-content p {
-  margin: 0.5rem 0;
+	margin: var(--wa-space-s) 0;
+	color: var(--wa-color-text-normal);
 }
 
-/* Optional: smooth collapse animation */
+.gt-accordion-content p:first-child {
+	margin-top: 0;
+}
+
+.gt-accordion-content p:last-child {
+	margin-bottom: 0;
+}
+
+/* Smooth collapse animation */
 .gt-accordion-content {
-  transition: max-height 0.2s ease;
-  overflow: hidden;
+	transition: max-height var(--wa-transition-duration-slow) var(--wa-transition-easing);
+	overflow: hidden;
+}
+
+/* Improved link styling within accordion content */
+.gt-accordion-content a {
+	color: var(--wa-color-text-link);
+	text-decoration: underline;
+	text-decoration-color: transparent;
+	transition: text-decoration-color var(--wa-transition-duration-fast) var(--wa-transition-easing);
+}
+
+.gt-accordion-content a:hover {
+	text-decoration-color: currentColor;
+}
+
+.gt-accordion-content a:focus-visible {
+	outline: var(--wa-border-width-l) solid var(--wa-color-focus);
+	outline-offset: var(--wa-focus-ring-offset);
+	border-radius: var(--wa-border-radius-s);
 }

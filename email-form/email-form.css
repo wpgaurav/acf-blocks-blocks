@@ -1,0 +1,123 @@
+/**
+ * Email Form Block Styles
+ * Using Web Awesome design tokens
+ */
+
+.email-form-block {
+	max-width: 600px;
+	margin: var(--wa-space-xl) auto;
+	padding: var(--wa-space-l);
+	background: var(--wa-color-surface-raised);
+	border-radius: var(--wa-border-radius-l);
+	border: var(--wa-border-width-s) solid var(--wa-color-surface-border);
+	box-shadow: var(--wa-shadow-m);
+}
+
+.email-form-block h3 {
+	font-size: var(--wa-font-size-2xl);
+	font-weight: var(--wa-font-weight-semibold);
+	margin-bottom: var(--wa-space-m);
+	color: var(--wa-color-text-normal);
+	line-height: var(--wa-line-height-condensed);
+}
+
+.email-form-block p {
+	font-size: var(--wa-font-size-m);
+	color: var(--wa-color-text-quiet);
+	margin-bottom: var(--wa-space-l);
+	line-height: var(--wa-line-height-normal);
+}
+
+.email-form-block form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wa-space-m);
+}
+
+.email-form-block input[type="email"],
+.email-form-block input[type="text"],
+.email-form-block textarea {
+	padding: var(--wa-input-padding-y) var(--wa-input-padding-x);
+	border: var(--wa-input-border);
+	border-radius: var(--wa-input-border-radius);
+	background: var(--wa-input-background);
+	color: var(--wa-color-text-normal);
+	font-size: var(--wa-font-size-m);
+	font-family: var(--wa-font-family-body);
+	transition: border-color var(--wa-transition-duration-normal) var(--wa-transition-easing);
+}
+
+.email-form-block input[type="email"]:hover,
+.email-form-block input[type="text"]:hover,
+.email-form-block textarea:hover {
+	border-color: var(--wa-color-neutral-border-normal);
+}
+
+.email-form-block input[type="email"]:focus,
+.email-form-block input[type="text"]:focus,
+.email-form-block textarea:focus {
+	outline: none;
+	border-color: var(--wa-color-focus);
+	box-shadow: 0 0 0 var(--wa-focus-ring-width) rgba(37, 99, 235, 0.2);
+}
+
+.email-form-block textarea {
+	min-height: 120px;
+	resize: vertical;
+}
+
+.email-form-block button[type="submit"],
+.email-form-block input[type="submit"] {
+	padding: var(--wa-button-padding-y) var(--wa-button-padding-x);
+	background: var(--wa-color-brand-fill-normal);
+	color: var(--wa-color-brand-on-normal);
+	border: none;
+	border-radius: var(--wa-button-border-radius);
+	font-size: var(--wa-font-size-m);
+	font-weight: var(--wa-button-font-weight);
+	cursor: pointer;
+	transition: all var(--wa-transition-duration-normal) var(--wa-transition-easing);
+}
+
+.email-form-block button[type="submit"]:hover,
+.email-form-block input[type="submit"]:hover {
+	background: var(--wa-color-brand-fill-loud);
+	transform: translateY(-1px);
+	box-shadow: var(--wa-shadow-m);
+}
+
+.email-form-block button[type="submit"]:active,
+.email-form-block input[type="submit"]:active {
+	transform: translateY(0);
+}
+
+.email-form-block button[type="submit"]:focus-visible,
+.email-form-block input[type="submit"]:focus-visible {
+	outline: var(--wa-border-width-l) solid var(--wa-color-focus);
+	outline-offset: var(--wa-focus-ring-offset);
+}
+
+.email-form-block .form-message {
+	padding: var(--wa-space-s) var(--wa-space-m);
+	border-radius: var(--wa-border-radius-m);
+	font-size: var(--wa-font-size-s);
+	margin-top: var(--wa-space-m);
+}
+
+.email-form-block .form-message.success {
+	background: var(--wa-color-success-fill-quiet);
+	color: var(--wa-color-success-on-quiet);
+	border: var(--wa-border-width-s) solid var(--wa-color-success-border-quiet);
+}
+
+.email-form-block .form-message.error {
+	background: var(--wa-color-danger-fill-quiet);
+	color: var(--wa-color-danger-on-quiet);
+	border: var(--wa-border-width-s) solid var(--wa-color-danger-border-quiet);
+}
+
+@media (max-width: 768px) {
+	.email-form-block {
+		padding: var(--wa-space-m);
+	}
+}
