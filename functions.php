@@ -237,7 +237,7 @@ if ( ! function_exists( 'md_enqueue_acf_block_styles_conditionally' ) ) {
 
         // Check which blocks are actually used and enqueue their styles
         foreach ( $block_styles as $block_name => $css_file ) {
-            if ( has_block( $block_name, $post ) ) {
+            if ( has_block( $block_name, $content ) ) {
                 $handle = str_replace( '/', '-', $block_name ) . '-style';
                 $css_path = get_stylesheet_directory_uri() . '/blocks/' . $css_file;
                 $css_file_path = get_stylesheet_directory() . '/blocks/' . $css_file;
