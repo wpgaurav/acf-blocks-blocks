@@ -1,0 +1,145 @@
+{
+  "key": "group_acf_html_editor_block",
+  "title": "HTML Editor Block",
+  "fields": [
+    {
+      "key": "acf_html_editor_html_code",
+      "label": "HTML Code",
+      "name": "acf_html_editor_html_code",
+      "type": "textarea",
+      "instructions": "Enter your HTML code here. Shortcodes are supported.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "<!-- Enter HTML here -->",
+      "maxlength": "",
+      "rows": 10,
+      "new_lines": ""
+    },
+    {
+      "key": "acf_html_editor_css_code",
+      "label": "CSS Code",
+      "name": "acf_html_editor_css_code",
+      "type": "textarea",
+      "instructions": "Enter your CSS code here (without <style> tags).",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "/* Enter CSS here */",
+      "maxlength": "",
+      "rows": 10,
+      "new_lines": ""
+    },
+    {
+      "key": "acf_html_editor_js_code",
+      "label": "JavaScript Code",
+      "name": "acf_html_editor_js_code",
+      "type": "textarea",
+      "instructions": "Enter your JavaScript code here (without <script> tags).",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "// Enter JavaScript here",
+      "maxlength": "",
+      "rows": 10,
+      "new_lines": ""
+    },
+    {
+      "key": "acf_html_editor_show_preview",
+      "label": "Show Live Preview",
+      "name": "acf_html_editor_show_preview",
+      "type": "true_false",
+      "instructions": "Enable to show live preview below the code editors.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "Show live preview",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Yes",
+      "ui_off_text": "No"
+    },
+    {
+      "key": "acf_html_editor_preview_height",
+      "label": "Preview Height",
+      "name": "acf_html_editor_preview_height",
+      "type": "text",
+      "instructions": "Set the preview height (e.g., 400px, 50vh). Default: 400px",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "acf_html_editor_show_preview",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "400px",
+      "placeholder": "400px",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "acf_html_editor_custom_class",
+      "label": "Custom CSS Class",
+      "name": "acf_html_editor_custom_class",
+      "type": "text",
+      "instructions": "Add custom CSS classes to the block wrapper.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/html-editor"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": ""
+}
