@@ -302,6 +302,26 @@ if (! function_exists('md_enqueue_all_block_styles')) {
     }
 }
 
+if ( ! function_exists( 'md_enqueue_webawesome_tokens' ) ) {
+    /**
+     * Enqueue Web Awesome design tokens globally.
+     *
+     * @return void
+     */
+    function md_enqueue_webawesome_tokens() {
+        $tokens_path = get_stylesheet_directory_uri() . '/assets/css/webawesome-tokens.css';
+        $tokens_file = get_stylesheet_directory() . '/assets/css/webawesome-tokens.css';
+
+        if ( file_exists( $tokens_file ) ) {
+            wp_enqueue_style( 'webawesome-tokens', $tokens_path, array(), filemtime( $tokens_file ) );
+        }
+    }
+}
+
+// Enqueue Web Awesome design tokens globally (frontend and editor)
+add_action( 'wp_enqueue_scripts', 'md_enqueue_webawesome_tokens', 5 );
+add_action( 'enqueue_block_editor_assets', 'md_enqueue_webawesome_tokens', 5 );
+
 // Hook into wp_enqueue_scripts to conditionally load block styles on frontend
 add_action('wp_enqueue_scripts', 'md_enqueue_acf_block_styles_conditionally');
 
